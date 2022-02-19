@@ -1,1 +1,80 @@
- 
+@font-face {
+    font-family: Denne Etude;
+    src: url(DenneEtude.ttf);
+}
+
+@font-face {
+    font-family: Merge One;
+    src: url(MergeOne-Regular.ttf);
+}
+
+body, html {
+    height: 100%;
+    background-color: #FEF5E9;
+}
+
+nav a svg {
+    width: 7em;
+    padding: 0 1em 0 1em;
+}
+
+nav a {
+    font-family: Denne etude;
+    font-size: 2em;
+    text-align: center;
+    padding: 0.5em 0 0.5em 0;
+    display: block;
+    text-decoration: none;
+    color: #FEF5E9;
+}
+
+nav a:last-child {
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 2.5em;   
+}
+
+nav {
+    float: left;
+    background-color: #16AC9C;
+    height: 100%;
+}
+
+@media (max-width:800px) {
+    nav {
+        height: 5em;
+        width: 100%;
+        display: flex;
+        align-items: right;
+        justify-content: right;
+    }
+
+    nav a svg {
+        width: 4em;
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
+
+    nav a {
+        font-size: 1.5em;
+        text-align: center;
+        padding: 1em 0.5em 1em 0.5em;
+    }
+
+    nav a:first-child {
+        padding: 0.5em 0.5em 0em 0.5em;
+    }
+
+    nav a:last-child {
+        position: relative;
+        bottom: 0;
+        left: 0;   
+    }
+}
+
+@media (max-width:500px) {
+    nav {
+        
+    }
+}
