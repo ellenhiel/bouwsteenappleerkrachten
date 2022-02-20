@@ -11,6 +11,19 @@
 body, html {
     height: 100%;
     background-color: #FEF5E9;
+    font-family: Merge One;
+}
+
+section {
+    margin-left: 20em;
+}
+
+h1, h2, h3 {
+    font-family: Denne etude;
+}
+
+h2 {
+    font-size: 1.5em;
 }
 
 nav a svg {
@@ -39,9 +52,57 @@ nav {
     float: left;
     background-color: #16AC9C;
     height: 100%;
+    position: fixed;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    border-radius: 0.5em;
+    color: #FEF5E9;
+    background-color: #16AC9C;
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 2em 1em 1em 2em;
+    display: inline-block;
+}
+
+.sorteer {
+    float: right;
+    margin-right: 10%;
+}
+
+.voegtoe2 {
+    margin-top: 0em;
+}
+
+.vak img {
+    width: 10em;
+    overflow: hidden;
+    background-color: #16AC9C;
+}
+
+.vak div {
+    display: inline-block;
+    width: 12em;
+    text-align: center;
+    padding: 1em 0em 0em 0em;
+    margin: 2em;
+    color: #16AC9C;
+    border: 3px solid #16AC9C;
+}
+
+.vak div a {
+    text-decoration: none;
+    color: #16AC9C;
 }
 
 @media (max-width:800px) {
+    section {
+        margin-left: 0em;
+        padding-top: 5em;
+    }
+
     nav {
         height: 5em;
         width: 100%;
@@ -74,7 +135,7 @@ nav {
 }
 
 @media (max-width:500px) {
-    nav {
-        
+    .vak div {
+        width: 80%;
     }
 }
