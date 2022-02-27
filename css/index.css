@@ -20,6 +20,7 @@ section {
 
 h1, h2, h3 {
     font-family: Denne etude;
+    color: #16AC9C;
 }
 
 h2 {
@@ -55,7 +56,7 @@ nav {
     position: fixed;
 }
 
-.btn {
+.btn, .dropdown {
     text-decoration: none;
     font-size: 0.9em;
     text-align: center;
@@ -65,6 +66,13 @@ nav {
     padding: 0.5em 1em 0.5em 1em;
     margin: 2em 1em 1em 2em;
     display: inline-block;
+}
+
+.dropdown {
+    background-color: #FEF5E9;
+    color: #16AC9C;
+    border: 2px solid #16AC9C;
+    padding: 0.4em 0.4em 0.4em 0.4em;
 }
 
 .sorteer {
@@ -95,6 +103,36 @@ nav {
 .vak div a {
     text-decoration: none;
     color: #16AC9C;
+}
+
+.leerlingen {
+    border: 2px solid #16AC9C;
+    border-radius: 0.5em;
+    padding: 1em;
+    display: block;
+    margin: 0 auto 5em auto;
+    width: 80%;
+}
+
+.leerlingen table img {
+    width: 3em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tr {
+    border-bottom: 1px solid #16AC9C;
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+
+.tda {
+    margin: 2em 1em 2em 1em;
 }
 
 @media (max-width:800px) {

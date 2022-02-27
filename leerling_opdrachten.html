@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/leerlingen_opdrachten.css">
     <title>Leerlingen</title>
 </head>
 <body>
@@ -15,72 +16,47 @@
         <a href="leerlingen.html" style="background-color: #fef5e9; color: #16AC9C;">Leerlingen</a>
         <a href="login.html">Uitloggen</a>
     </nav>
-
     <section>
+        <a class="btn" href="leerlingen.html">< Ga terug</a>
+        <div class="leerlingen" style="border: none; padding: 0;">
+        <table>
+            <col style="width: 90%;">
+            <col style="width: 5%;">
+            <col style="width: 5%;">
+            <tr>
+                <td><h1>Stijn Bouckaert</h1></td>
+                <td><img src="images/munt.png" alt="coin"></td>
+                <td>50</td>
+            </tr>
+        </table>
 
-        <a class="btn" href="#">print avatars</a>
+        <table class="leerlingen" style="border-radius: 0.5em; width: 100%;">
+            <col style="width: 90%;">
+            <col style="width: 5%;">
+            <col style="width: 5%;">
+            <th>&#9660; Voltooide opdrachten</th>
+            <tr>
+                <td>Boekbespreking over beschermde dieren</td>
+                <td><img src="images/munt.png" alt="coin"></td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Stiften meebrengen</td>
+                <td><img src="images/munt.png" alt="coin"></td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Rapport laten tekenen</td>
+                <td><img src="images/munt.png" alt="coin"></td>
+                <td>0</td>
+            </tr>
+        </table>
 
-        <select class="dropdown" name="klas" id="klas">
-        <option value="volvo">6A</option>
-        <option value="saab">6B</option>
-        <option value="mercedes">5A</option>
-        <option value="audi">5B</option>
-        </select>
-
-        <div class="leerlingen">
-
-            <table>
-                <col style="width: 30%;">
-                <col style="width: 10%;">
-                <col style="width: 40%;">
-                <col style="width: 10%;">
-                <col style="width: 10%;">
-
-                <tr>
-                    <td><p>Stijn Bouckaert</p></td>
-                    <td><img src="images/avatar.png" alt="avatar"></td>
-                    <td><a class="btn tda" href="leerling_opdrachten.html">voltooide opdrachten</a></td>
-                    <td><img src="images/munt.png" alt="coin"></td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td><p>Deborah Baeten</p></td>
-                    <td><img src="images/avatar.png" alt="avatar"></td>
-                    <td><a class="btn tda" href="#">voltooide opdrachten</a></td>
-                    <td><img src="images/munt.png" alt="coin"></td>
-                    <td>60</td>
-                </tr>
-                <tr>
-                    <td><p>Ellen Hiel</p></td>
-                    <td><img src="images/avatar.png" alt="avatar"></td>
-                    <td><a class="btn tda" href="#">voltooide opdrachten</a></td>
-                    <td><img src="images/munt.png" alt="coin"></td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td><p>Bailey Lievens</p></td>
-                    <td><img src="images/avatar.png" alt="avatar"></td>
-                    <td><a class="btn tda" href="#">voltooide opdrachten</a></td>
-                    <td><img src="images/munt.png" alt="coin"></td>
-                    <td>50</td>
-                </tr>
-                <tr>
-                    <td><p>Ilya Plyusnin</p></td>
-                    <td><img src="images/avatar.png" alt="avatar"></td>
-                    <td><a class="btn tda" href="#">voltooide opdrachten</a></td>
-                    <td><img src="images/munt.png" alt="coin"></td>
-                    <td>40</td>
-                </tr>
-                <tr>
-                    <td><p>Nick Bevers</p></td>
-                    <td><img src="images/avatar.png" alt="avatar"></td>
-                    <td><a class="btn tda" href="#">voltooide opdrachten</a></td>
-                    <td><img src="images/munt.png" alt="coin"></td>
-                    <td>30</td>
-                </tr>
-            </table>
-
+        <table class="leerlingen" style="border-radius: 0.5em; width: 100%;">
+            <th>&#9660; Niet voltooide opdrachten</th>
+        </table>
         </div>
     </section>
+    
 </body>
 </html>
