@@ -1,0 +1,36 @@
+img {
+    width: 2em;
+}
+
+p {
+    display: inline-block;
+}
+
+th {
+    text-align: left;
+}
+
+tr td:first-child {
+    text-align: right;
+}
+
+.leerlingen {
+    max-width: 40em;
+    margin-bottom: 0;
+}
+
+.btn:last-child {
+    margin: 1em 0 0 0;
+}
+
+.div {
+    margin: 0em auto;
+    margin-bottom: 2em;
+    display: block;
+    width: 80%;
+    max-width: 40em;
+}
+
+.div:last-child {
+    text-align: right;
+}
