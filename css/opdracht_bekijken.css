@@ -1,0 +1,29 @@
+table {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+}
+table tr {
+    border: none;
+    padding: 1em 0 1em 0;
+}
+
+table tr:nth-child(4) td {
+    padding-bottom: 5em;
+}
+
+table tr:nth-child(2) td:first-child, table tr:nth-child(3) td:first-child, table tr:nth-child(4) td:first-child {
+    font-size: 1.3em;
+}
+
+table tr:nth-child(5) td {
+    font-size: 1.3em;
+}
+
+td {
+    padding: 0.5em 0 0.5em 0;
+}
+
+.btn {
+    margin-left: 0;
+}
