@@ -1,13 +1,18 @@
+<?php include_once('core/autoload.php');?>
+<?php
+    $userId = 1;
+    $firstname = User::getFirstnameById($userId);
+?>
+    
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/opdrachten.css">
-    <title>Opdrachten Nederlands</title>
+    <title>Opdrachten</title>
 </head>
 <body>
     <nav>
@@ -18,30 +23,35 @@
     </nav>
 
     <section>
-        <a class="btn" href="opdrachten.php">< Ga terug</a>
-        <div class="leerlingen" style="border: none; padding: 0;">
-            <h1>Nederlands</h1>    
-            <table class="leerlingen" style="border-radius: 0.5em; width: 100%;">
-                <col style="width: 60%;">
-                <col style="width: 20%;">
-                <col style="width: 15%;">
-                <col style="width: 5%">
-                <th colspan="2">&#9660; Lopende opdrachten</th>
-                <th colspan="2"><a href="opdracht_toevoegen.html" class="btn">toevoegen</a></th>
-                <tr>
-                    <td>Boekbespreking over beschermde dieren</td>
-                    <td>12/01/2022</td>
-                    <td><a href="opdracht_beoordelen.html" class="btn" style="margin: 0;">beoordelen</a></td>
-                    <td><a href="#" class="btn" style="margin: 0;">&#9998;</a></td>
-                </tr>
-            </table>
-            <table class="leerlingen" style="border-radius: 0.5em; width: 100%;">
-                <th>&#9658; Afgelopen opdrachten</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </table>
+
+    <a class="btn sorteer" href="#">sorteer op &#160; v</a>
+    <br><br>
+    <a class="btn voegtoe1" href="#">+ voeg vak toe <?php echo $firstname ?></a>
+    <a class="btn voegtoe2" href="opdracht_toevoegen.html">+ voeg opdracht toe</a>
+
+    <div class="vak">
+        <div>
+            <a href="opdracht_nederlands.html">
+                <img src="images/Final-logo_Bouwsteen.png" alt="NederlandsFoto">
+                <h2>Nederlands</h2>
+            </a>
         </div>
+
+        <div>
+            <a href="#">
+                <img src="images/Final-logo_Bouwsteen.png" alt="NederlandsFoto">
+                <h2>Frans</h2>
+            </a>
+        </div>
+
+        <div>
+            <a href="#">
+                <img src="images/Final-logo_Bouwsteen.png" alt="NederlandsFoto">
+                <h2>Wereldorientatie</h2>
+            </a>
+        </div>
+    </div>
+
     </section>
     
 </body>
