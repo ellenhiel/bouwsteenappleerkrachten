@@ -26,7 +26,7 @@
 
     <a class="btn sorteer" href="#">sorteer op &#160; v</a>
     <br><br>
-    <a class="btn voegtoe1" href="#">+ voeg vak toe <?php echo $firstname ?></a>
+    <a class="btn voegtoe1" href="#">+ voeg vak toe <?php echo $firstname['voornaam']; ?></a>
     <a class="btn voegtoe2" href="opdracht_toevoegen.html">+ voeg opdracht toe</a>
 
     <div class="vak">
