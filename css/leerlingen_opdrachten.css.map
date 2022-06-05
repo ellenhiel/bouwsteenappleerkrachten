@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,KAAK,CAAC,EAAE,CAAC;EACP,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,KAAK;EAChB,OAAO,EAAE,eAAe;CACzB",
+    "sources": [
+        "leerlingen_opdrachten.scss",
+        "_colors.scss"
+    ],
+    "names": [],
+    "file": "leerlingen_opdrachten.css"
+}
