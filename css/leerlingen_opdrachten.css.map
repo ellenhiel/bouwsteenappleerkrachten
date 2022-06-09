@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,KAAK,CAAC,EAAE,CAAC;EACP,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,KAAK;EAChB,OAAO,EAAE,eAAe;CACzB",
+    "mappings": "AAEA,AAAA,KAAK,CAAC,EAAE,CAAC;EACP,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,KAAK;EAChB,OAAO,EAAE,eAAe;CACzB;;AAED,AAAA,KAAK,CAAC,EAAE,CAAC;EACP,gBAAgB,EAAE,sBAAsB;CACzC",
     "sources": [
         "leerlingen_opdrachten.scss",
         "_colors.scss"

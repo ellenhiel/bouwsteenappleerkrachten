@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/opdracht_toevoegen.css">
-    <title>Vak toevoegen</title>
+    <title>Opdracht toevoegen</title>
 </head>
 
 <body>
@@ -50,39 +50,53 @@
                 </g>
             </svg></a>
         <a href="opdrachten.php" style="background-color: #F6F6F6; color: #16AC9C;">Opdrachten</a>
-        <a href="leerlingen.html">Leerlingen</a>
-        <a href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="31.5" viewBox="0 0 36 31.5">
+        <a href="leerlingen.php">Leerlingen</a>
+        <a href="login.php"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="31.5" viewBox="0 0 36 31.5">
                 <path id="Icon_open-account-logout" data-name="Icon open-account-logout"
                     d="M13.5,0V4.5h18V27h-18v4.5H36V0ZM9,9,0,15.75,9,22.5V18H27V13.5H9Z" fill="#f6f6f6" />
             </svg>Uitloggen</a>
     </nav>
 
     <section>
-        <a class="btn_no_style arrow_back" href="opdrachten.php"><svg xmlns="http://www.w3.org/2000/svg" width="7.5"
+        <a class="btn_no_style arrow_back" href="javascript:history.back()"><svg xmlns="http://www.w3.org/2000/svg" width="7.5"
                 height="15" viewBox="0 0 7.5 15">
                 <path id="Icon_material-arrow-drop-down" data-name="Icon material-arrow-drop-down"
                     d="M10.5,15,18,22.5,25.5,15Z" transform="translate(22.5 -10.5) rotate(90)" fill="#16ac9c" />
             </svg>vakken</a>
-            <h2>Vak toevoegen</h2>
-        <form action="#" id="vakform">
-
+            <h2>Opdracht aanpassen</h2>
+        <form action="#" id="opdrachtform">
             <div>
                 <p>Klas:</p>
                 <p>6A</p>
             </div>
             
             <div>
-                <p><label for="vaknaam">Naam vak:</label></p>
-                <p><input type="text" name="vaknaam" placeholder="Bv. Nederlands"></p>
+                <p>Vak:</p>
+                <p>Nederlands</p>
             </div>
 
             <div>
-                <p><label for="omslagfoto">Omslagfoto:</label></p>
-                <input type="file" id="img" name="img" accept="image/*">
+                <p><label for="einddatum">Einddatum:</label></p>
+                <input type="date" name="einddatum" placeholder="2022-03-06" min="2022-03-06" max="2022-06-30">
             </div>
 
-            <a href="#" class="btn">Annuleer</a>
-            <input class="btn" type="submit" value="Voeg toe">
+            <div>
+                <p><label for="teverdienenmunten">Te verdienen munten:</label></p>
+                <input type="number" name="teverdienenmunten" min="0" placeholder="10">
+            </div>
+
+            <div>
+                <p><label for="titel">Titel:</label></p>
+                <input type="text" name="titel" placeholder="Titel van de opdracht">
+            </div>
+
+            <div>
+                <p><label for="beschrijving">Beschrijving:</label></p>
+                <input type="text" class="beschrijving" name="beschrijving" placeholder="Beschrijving van de opdracht">
+            </div>
+
+            <a style="background-color: #FF0000; color: white;" href="#" class="btn">Verwijder</a>
+            <input style="background-color: #FFD706;" class="btn" type="submit" value="Pas aan">
         </form>
     </section>
 

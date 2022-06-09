@@ -50,8 +50,8 @@
                 </g>
             </svg></a>
         <a href="opdrachten.php" style="background-color: #F6F6F6; color: #16AC9C;">Opdrachten</a>
-        <a href="leerlingen.html">Leerlingen</a>
-        <a href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="31.5" viewBox="0 0 36 31.5">
+        <a href="leerlingen.php">Leerlingen</a>
+        <a href="login.php"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="31.5" viewBox="0 0 36 31.5">
                 <path id="Icon_open-account-logout" data-name="Icon open-account-logout"
                     d="M13.5,0V4.5h18V27h-18v4.5H36V0ZM9,9,0,15.75,9,22.5V18H27V13.5H9Z" fill="#f6f6f6" />
             </svg>Uitloggen</a>
