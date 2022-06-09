@@ -13,7 +13,7 @@
 
 body, html {
   height: 100%;
-  background-color: #FEF5E9;
+  background-color: $background;
   font-family: Montserrat;
 }
 
@@ -24,98 +24,142 @@ section {
 h1, h2, h3 {
   font-family: Pacifico;
   letter-spacing: 2px;
-  color: #16AC9C;
+  color: $green;
 }
 
 h2 {
   font-size: 1.5em;
 }
 
-nav a svg {
+nav a:first-child svg {
   width: 7em;
   padding: 0 1em 0 1em;
 }
 
+nav a:last-child svg {
+  width: 25px;
+  padding-right: 0.5em;
+}
+
 nav a {
-  font-family: Montserrat;
+  font-family: Pacifico;
   font-size: 2em;
+  letter-spacing: 2px;
   text-align: center;
   padding: 0.5em 0 0.5em 0;
   display: block;
   text-decoration: none;
-  color: #FEF5E9;
+  color: $background;
 }
 
 nav a:last-child {
-  color: #FEF5E9;
+  color: $background;
   position: absolute;
   bottom: 0;
   left: 2.5em;
-    left: 2.5em;   
-  left: 2.5em;
+  display: flex;
+  align-items: center;
 }
 
 nav {
   float: left;
-  background-color: #16AC9C;
+  background-color: $green;
   height: 100%;
   position: fixed;
 }
 
-.btn, .dropdown {
+.btn, .dropdown, .btn_no_style {
   text-decoration: none;
   font-size: 0.9em;
   text-align: center;
-  border-radius: 0.5em;
-  color: #FEF5E9;
-  background-color: #16AC9C;
+  border-radius: 4px;
+  color: $green;
+  background: $background;
+  box-shadow: 0px 3px 6px #00000029;
   padding: 0.5em 1em 0.5em 1em;
-  margin: 2em 1em 1em 2em;
+  margin: 2em 1em 1em 0;
   display: inline-block;
   border: none;
   cursor: pointer;
 }
 
-.dropdown {
-  background-color: #FEF5E9;
-  color: #16AC9C;
-  border: 2px solid #16AC9C;
-  padding: 0.4em 0.4em 0.4em 0.4em;
+.dropdown, .btn_no_style {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  background-color: transparent;
+  box-shadow: none;
+  color: $green;
+  padding: 0.5em 1em 0.5em 1em;
 }
 
-.sorteer {
-  float: right;
-  margin-right: 10%;
+.btn_with_svg {
+  display: flex;
+  width: max-content;
+  align-items: center;
 }
 
-.voegtoe2 {
-  margin-top: 0em;
+.btn_with_svg svg, .btn_no_style svg {
+  margin-right: 0.5em;
+  width: 15px;
+}
+
+.btn_no_style.arrow_back {
+  margin-top: 0;
+  padding-top: 1em;
+}
+
+.filters {
+  display: flex;
+  align-items: flex-end;
+}
+
+.voegtoe1, .voegtoe2 {
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.voegtoe1 svg, .voegtoe2 svg {
+  width: 15px;
+  margin-right: 0.5em;
+}
+
+.vak {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  gap: 25px;
 }
 
 .vak img {
-  width: 10em;
+  width: 100%;
+  height: 8em;
   overflow: hidden;
-  background-color: #16AC9C;
 }
 
 .vak div {
   display: inline-block;
   width: 12em;
   text-align: center;
-  padding: 1em 0em 0em 0em;
-  margin: 2em;
-  color: #16AC9C;
-  border: 3px solid #16AC9C;
+  margin-top: 1em;
+  color: $green;
 }
 
-.vak div a {
+.vak div a, .vak div a h2 {
   text-decoration: none;
-  color: #16AC9C;
+}
+
+.vak div a h2 {
+  font-size: 1.2em;
+  color: $background;
+  background-color: $green;
+  margin: -0.3em 0 0 0;
+  padding: 0.6em 0 0.5em 0;
 }
 
 .leerlingen {
-  border: 2px solid #16AC9C;
-  border-radius: 0.5em;
+  border-radius: 4px;
   padding: 1em;
   display: block;
   margin: 0 auto 5em auto;
@@ -123,7 +167,7 @@ nav {
 }
 
 .leerlingen table img {
-  width: 3em;
+  width: 25px;
 }
 
 table {
@@ -131,21 +175,78 @@ table {
   border-collapse: collapse;
 }
 
-table tr {
-  border-bottom: 1px solid #16AC9C;
+.leerlingen table tr:nth-child(odd) {
+  background-color: $formbgc;
 }
 
-table tr:last-child {
-  border-bottom: none;
+.leerlingen table tr td:nth-child(4) {
+  display: flex;
+  align-items: center;
+  padding-top: 2em;
+}
+
+.leerlingen table tr td svg {
+  width: 25px;
+  float: right;
+  padding-right: 1em;
+}
+
+.leerlingen table tr td:first-child {
+  padding-left: 1em;
+}
+
+.leerlingen table tr td:last-child p {
+  visibility: hidden;
+  position: absolute;
+  background-color: $formdisabled;
+  width: max-content;
+  right: 0;
+  padding: 1em;
+  margin: 3em 8% 0 0;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.leerlingen table tr td:last-child:hover p {
+  visibility: visible;
+}
+
+.leerlingen table tr td:last-child p:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 24px solid $formdisabled;
+  border-left: 12px solid transparent;
+  border-bottom: 12px solid $formdisabled;
+  border-top: 20px solid transparent;
+  right: 32px;
+  top: -14px;
 }
 
 .tda {
+  background-color: $green;
+  box-shadow: none;
+  color: $background;
   margin: 2em 1em 2em 1em;
 }
 
+@media (max-width: 970px) {
+  .vak {
+    grid-template-columns: 45% 45%;
+  }
+}
+
 @media (max-width: 800px) {
+  .vak {
+    width: 100%;
+    display: inline-block;
+  }
+  .vak div {
+    margin-right: 1em;
+  }
   section {
-    margin-left: 0em;
+    margin-left: 1em;
+    margin-right: 1em;
     padding-top: 5em;
   }
   nav {
@@ -182,7 +283,12 @@ table tr:last-child {
 }
 
 @media (max-width:500px) {
-    .vak div {
-        width: 80%;
-    }
+  .vak div {
+    width: 100%;
+    margin: 1em auto;
+    display: block;
+  }
+  .leerlingen {
+    width: 90%;
+  }
 }

@@ -1,3 +1,7 @@
+.leerlingen table tr {
+  background-color: transparent !important;
+}
+
 table th {
   text-align: left;
   font-size: 1.3em;
@@ -5,7 +9,16 @@ table th {
 
 table th:nth-last-of-type(1) {
   font-size: 1em;
+  margin-top: -0.5em;
   float: right;
+}
+
+table th:first-child a svg {
+  text-decoration: none;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  width: 15px;
+  fill: black;
 }
 
 .btn {
@@ -15,5 +28,21 @@ table th:nth-last-of-type(1) {
 
 table tr td {
   padding: 0.7em 0.1em 0.7em 0.1em;
+}
+
+.leerlingen.lopende td:last-child {
+  padding-top: 1em;
+}
+
+@media (max-width: 600px) {
+  .leerlingen span {
+    display: none;
+  }
+  .leerlingen.lopende td:last-child {
+    padding-top: 1.3em;
+  }
+  .leerlingen.lopende td svg {
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=opdrachten.css.map */

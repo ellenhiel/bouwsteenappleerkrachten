@@ -9,7 +9,7 @@
 }
 
 body, html {
-  background-color: #FEF5E9;
+  background-color: #F6F6F6;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 
@@ -41,9 +41,9 @@ form label {
 form input {
   width: 100%;
   margin-top: 1em;
-  background: #FEF5E9;
+  background: #F6F6F6;
   border: 2px solid #16AC9C;
-  border-radius: 0.5em;
+  border-radius: 4px;
   padding: 0.5em;
 }
 
@@ -54,8 +54,8 @@ form div {
 form button {
   background: #16AC9C;
   border: none;
-  border-radius: 0.5em;
-  color: #FEF5E9;
+  border-radius: 4px;
+  color: #F6F6F6;
   padding: 0.5em 2em 0.5em 2em;
   display: block;
   margin: 2.5em auto;

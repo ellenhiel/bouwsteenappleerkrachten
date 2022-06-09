@@ -26,7 +26,7 @@
 
         public static function getFirstnameById($userId){
             $conn = Database::getConnection(); 
-            $query = $conn->prepare("SELECT voornaam FROM leerlingen WHERE id = :userId");
+            $query = $conn->prepare("SELECT surname FROM teachers WHERE id = :userId");
             
             $query->bindValue(":userId", $userId);
             $query->execute();
