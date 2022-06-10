@@ -7,6 +7,10 @@ table th {
   font-size: 1.3em;
 }
 
+table:last-child th {
+  padding-bottom: 1.5em;
+}
+
 table th:nth-last-of-type(1) {
   font-size: 1em;
   margin-top: -0.5em;
