@@ -146,6 +146,17 @@
             return $result; 
         }
 
+        public function vakToevoegen(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO subjects (id, name, classes_id) VALUES (NULL, :name, :class_id)");
+            
+            $query->bindValue(":name", $this->title);
+            $query->bindValue(":class_id", $this->class_id);
+
+            $result = $query->execute();
+            return $result; 
+        }
+
         public static function getAssignmentsById($class_id, $subject_id){
             $conn = Database::getConnection(); 
             $query = $conn->prepare("SELECT * FROM assignments WHERE subjects_id = :subject_id AND classes_id = :class_id ORDER BY due_date ASC");
@@ -156,5 +167,83 @@
             $assignment = $query->fetchAll();
             
             return $assignment;
+        }
+
+        public static function getAssignmentById($assignment_id){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT * FROM assignments WHERE id = :assignment_id ORDER BY due_date ASC");
+            
+            $query->bindValue(":assignment_id", $assignment_id);
+            $query->execute();
+            $assignment = $query->fetchAll();
+            
+            return $assignment;
+        }
+
+        public static function getStudentsByClassId($class_id){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT * FROM students WHERE classes_id = :class_id ORDER BY name ASC");
+            
+            $query->bindValue(":class_id", $class_id);
+            $query->execute();
+            $students = $query->fetchAll();
+            
+            return $students;
+        }
+
+        public static function getStudentById($student_id){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT * FROM students WHERE id = :student_id");
+            
+            $query->bindValue(":student_id", $student_id);
+            $query->execute();
+            $student = $query->fetchAll();
+            
+            return $student;
+        }
+
+        public static function getIdStudentsAssignmentByStudentsId($student_id, $finished){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT assignments_id FROM students_assignments WHERE students_id = :student_id AND finished = :finished ORDER BY id DESC");
+            
+            $query->bindValue(":student_id", $student_id);
+            $query->bindValue(":finished", $finished);
+            $query->execute();
+            $assignments = $query->fetchAll();
+            
+            return $assignments;
+        }
+
+        public static function getSmileys($student_id){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT * FROM students_smileys WHERE students_id = :student_id");
+            
+            $query->bindValue(":student_id", $student_id);
+            $query->execute();
+            $smileys = $query->fetchAll();
+            
+            return $smileys;
+        }
+
+        public static function getPathSmileys($smiley_id){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT path FROM smileys WHERE id = :smiley_id");
+            
+            $query->bindValue(":smiley_id", $smiley_id);
+            $query->execute();
+            $paths = $query->fetchAll();
+            
+            return $paths;
+        }
+
+        public static function getStudentsIdByClassId($class_id){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT * FROM students WHERE classes_id = :class_id ORDER BY id DESC");
+            
+            $query->bindValue(":class_id", $class_id);
+            $query->execute();
+            $students = $query->fetchAll();
+            
+            return $students;
         }
     }

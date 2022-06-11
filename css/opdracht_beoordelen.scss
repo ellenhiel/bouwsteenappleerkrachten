@@ -36,3 +36,12 @@ tr td:first-child {
 .div:last-child {
   text-align: right;
 }
+
+div.opdracht {    
+  display: flex;
+  align-items: center;
+}
+
+div.opdracht img {
+  padding-left: 1em;
+}

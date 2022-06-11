@@ -1,3 +1,28 @@
+<?php include_once('core/autoload.php');?>
+<?php
+    $className = User::getClassById($_GET['class_id']);
+    
+    if(!empty($_POST)) {
+        if(empty($_POST['vaknaam']) || empty($_GET['class_id'])) {
+            $error = "Vak is niet aangemaakt.";
+        } else {        
+            $name = $_POST['vaknaam'];
+            $class_id = $_GET['class_id'];
+            
+            $vakToevoegen = new User();
+            $vakToevoegen->setTitle($name);
+            $vakToevoegen->setClass_id($class_id);
+            $vakToevoegen->vakToevoegen(); 
+            header('Location: http://localhost:8888/bouwsteenappleerkrachten/opdrachten.php?class_id=' . $class_id);
+        }
+    } 
+
+    if(isset($_GET['class_id'])) {
+        $class = $_GET['class_id'];
+    } else {
+        $class = "klas";
+    }
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -13,7 +38,7 @@
 
 <body>
     <nav>
-        <a href="opdrachten.php?class_id=klas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 619.05 307.48">
+        <a href="opdrachten.php?class_id=<?php echo $class; ?>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 619.05 307.48">
                 <defs>
                     <style>
                         .cls-1 {
@@ -49,8 +74,8 @@
                         d="M546.19,186.52a34.18,34.18,0,0,0,6.8,1.2,3.15,3.15,0,0,1,1.2-.4q0,.41,12,4,8.59,3.6,13.2,15.2a116.76,116.76,0,0,1,2.8,16c.53.07.8.34.8.8a4.61,4.61,0,0,0-.8,2.4,71.34,71.34,0,0,1,2.8,18.4q0,8.81-6.4,8.8c0-.8-1.74-1.33-5.2-1.6q-4-2.1-4-4.8-.81,0-3.6-20.4,0-5.3-4.4-17.6-6.4-4.4-12.4-4.4a3.08,3.08,0,0,1-1.2.4,3.26,3.26,0,0,0-1.2-.4q-9.6,1.71-10.4,4a25.58,25.58,0,0,0-5.6,7.6l.4.8v.4c-.94,1.4-1.87,4.34-2.8,8.8a3.26,3.26,0,0,1,.4,1.2c-.27,1.87-.4,2.94-.4,3.2l.4.8-.8,1.6.4,2.8-.4.8q1.1,7.41,2,8.4v1.2l-1.2,1.6a6.23,6.23,0,0,1,.8,2.4c-.87,0-1.54,1.34-2,4l-1.6,1.2h-2.4q-6.1,0-12-6.8v-.4c.06-1.86.33-2.8.8-2.8a3,3,0,0,1-.4-1.2q-2.7-26.1-8.8-38,1.69-5.59,5.6-5.6a7.26,7.26,0,0,1,4.4-2.8h3.2a4,4,0,0,1,2.4,3.6h1.2a30.68,30.68,0,0,1,15.6-12.8,16.63,16.63,0,0,0,4-.8H545Z" />
                 </g>
             </svg></a>
-        <a href="opdrachten.php?class_id=klas" style="background-color: #F6F6F6; color: #16AC9C;">Opdrachten</a>
-        <a href="leerlingen.php">Leerlingen</a>
+        <a href="opdrachten.php?class_id=<?php echo $class; ?>" style="background-color: #F6F6F6; color: #16AC9C;">Opdrachten</a>
+        <a href="leerlingen.php?class_id=<?php echo $class; ?>">Leerlingen</a>
         <a href="login.php"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="31.5" viewBox="0 0 36 31.5">
                 <path id="Icon_open-account-logout" data-name="Icon open-account-logout"
                     d="M13.5,0V4.5h18V27h-18v4.5H36V0ZM9,9,0,15.75,9,22.5V18H27V13.5H9Z" fill="#f6f6f6" />
@@ -64,11 +89,11 @@
                     d="M10.5,15,18,22.5,25.5,15Z" transform="translate(22.5 -10.5) rotate(90)" fill="#16ac9c" />
             </svg>vakken</a>
             <h2>Vak toevoegen</h2>
-        <form action="#" id="vakform">
+        <form action="#" id="vakform" method="POST" enctype="multipart/form-data" onsubmit="opdrachtToevoegen(event)">
 
             <div>
                 <p>Klas:</p>
-                <p>6A</p>
+                <p><?php echo $className; ?></p>
             </div>
             
             <div>
@@ -76,10 +101,14 @@
                 <p><input type="text" name="vaknaam" placeholder="Bv. Nederlands"></p>
             </div>
 
-            <div>
+            <!--<div>
                 <p><label for="omslagfoto">Omslagfoto:</label></p>
                 <input type="file" id="img" name="img" accept="image/*">
-            </div>
+            </div>-->
+
+            <?php if(isset($error)): ?>
+                <p style="color: red; font-weight: bold;"><?php echo $error; ?></p>
+            <?php endif; ?>
 
             <a href="javascript:history.back()" class="btn">Annuleer</a>
             <input class="btn" type="submit" value="Voeg toe">
