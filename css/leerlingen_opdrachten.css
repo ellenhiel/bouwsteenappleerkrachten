@@ -7,4 +7,12 @@ table th {
 table tr {
   background-color: transparent !important;
 }
+
+table th:first-child a svg {
+  text-decoration: none;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  width: 15px;
+  fill: black;
+}
 /*# sourceMappingURL=leerlingen_opdrachten.css.map */

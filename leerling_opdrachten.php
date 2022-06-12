@@ -88,7 +88,16 @@
             <col style="width: 90%;">
             <col style="width: 5%;">
             <col style="width: 5%;">
-            <th>&#9660; Voltooide opdrachten</th>
+            <th><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+              <g id="Polygon_1" data-name="Polygon 1" transform="translate(20 17) rotate(180)">
+                <path
+                  d="M 19.12578964233398 16.5 L 0.8742111921310425 16.5 L 10 0.9861590266227722 L 19.12578964233398 16.5 Z"
+                  stroke="none" />
+                <path
+                  d="M 10 1.97230052947998 L 1.7484130859375 16 L 18.2515869140625 16 L 10 1.97230052947998 M 10 0 L 20 17 L 0 17 L 10 0 Z"
+                  stroke="none" fill="#707070" />
+              </g>
+            </svg></a> Voltooide opdrachten</th>
             <?php if(!empty($assignmentsdoneid)): ?>
             <?php foreach($assignmentsdoneid as $assignmentdoneid) {
                 $assignmentsdone = User::getAssignmentById($assignmentdoneid['assignments_id']);
@@ -114,7 +123,16 @@
             <col style="width: 90%;">
             <col style="width: 5%;">
             <col style="width: 5%;">
-            <th>&#9658; Niet voltooide opdrachten</th>
+            <th><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
+              <g id="Polygon_1" data-name="Polygon 1" transform="translate(20 17) rotate(180)">
+                <path
+                  d="M 19.12578964233398 16.5 L 0.8742111921310425 16.5 L 10 0.9861590266227722 L 19.12578964233398 16.5 Z"
+                  stroke="none" />
+                <path
+                  d="M 10 1.97230052947998 L 1.7484130859375 16 L 18.2515869140625 16 L 10 1.97230052947998 M 10 0 L 20 17 L 0 17 L 10 0 Z"
+                  stroke="none" fill="#707070" />
+              </g>
+            </svg></a> Niet voltooide opdrachten</th>
             <?php if(!empty($assignmentsnotdoneid)): ?>
             <?php foreach($assignmentsnotdoneid as $assignmentnotdoneid) {
                 $assignmentsnotdone = User::getAssignmentById($assignmentnotdoneid['assignments_id']);
