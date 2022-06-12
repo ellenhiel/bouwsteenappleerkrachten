@@ -1,14 +1,13 @@
 @import 'colors';
-@import 'navigation';
 
 @font-face {
   font-family: Pacifico;
-  src: url(Pacifico-Regular.ttf);
+  src: url(../lettertypes/Pacifico-Regular.ttf);
 }
 
 @font-face {
   font-family: Montserrat;
-  src: url(Montserrat-Regular.ttf);
+  src: url(../lettertypes/Montserrat-Regular.ttf);
 }
 
 body, html {

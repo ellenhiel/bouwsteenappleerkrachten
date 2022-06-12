@@ -13,16 +13,6 @@
         private $assignment_id;
         private $points;
 
-        const MIN_USERNAME = 5; //Minimum amount of username characters
-        const MAX_USERNAME = 20; //Maximum amount of username characters
-
-        const MIN_PASSWORD = 5; //Minimum amount of password characters
-        const MAX_PASSWORD = 200; //Maximum amount of password characters
-        const MIN_CAPITAL = 1; //Minimum amount of capital characters    
-        const MAX_BIO = 350;  //Maximum amount of bio characters   
-
-        const COST_PASSWORD = 12; //Cost amount for password hashing
-
         public function setUserId($userId){
             $this->userId = $userId;
         }
@@ -101,6 +91,17 @@
 
         public function getPoints(){
             return $this->points;
+        }
+
+        public static function getUserIdbyUsername($username){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT id FROM teachers WHERE username = :username");
+            
+            $query->bindValue(":username", $username);
+            $query->execute();
+            $id = $query->fetch();
+            
+            return $id['id'];
         }
 
         public static function getCourseById($classId, $volgorde){
