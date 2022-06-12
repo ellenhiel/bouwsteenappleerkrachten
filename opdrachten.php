@@ -2,7 +2,14 @@
 <?php
     $classId = $_GET['class_id'];
     $userId = 1;
-    $courses = User::getCourseById($classId);
+
+    if(isset($_GET['sort'])) {
+        $volgorde = $_GET['sort'];
+    } else {
+        $volgorde = "ASC";
+    }
+   
+    $courses = User::getCourseById($classId, $volgorde);
     $classesId = User::getClassesIdById($userId);
 
     if(isset($_GET['class_id'])) {
@@ -44,8 +51,8 @@
             </svg> opdracht</a>
             <select class="dropdown" name="sorteer" id="sorteer">
                 <option value="sorteer">sorteer op</option>
-                <option value="alfabet">A-Z</option>
-                <option value="recent">recent</option>
+                <option value="ASC">A-Z</option>
+                <option value="DESC">Z-A</option>
             </select>        
             <?php else: ?>
             <?php endif;?>  
@@ -76,5 +83,6 @@
 
     </section>
     <script src="js/classOpdrachten.js"></script>
+    <script src="js/sortOpdrachten.js"></script>
 </body>
 </html>

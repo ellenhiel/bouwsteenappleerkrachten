@@ -1,17 +1,38 @@
 <?php include_once('core/autoload.php');?>
 <?php
-    //var_dump($_POST);
-
     $class_id = $_GET['class_id'];
     $assignment_id = $_GET['assignment_id'];
     $subject = User::getSubjectById($_GET['subject_id'])['name'];
     $assignment = User::getAssignmentById($assignment_id)[0];
     $students = User::getStudentsIdByClassId($class_id);
+    $date = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( date('Y-m-d')) ) ));
 
     if(isset($_GET['class_id'])) {
         $class = $_GET['class_id'];
     } else {
         $class = "klas";
+    }
+
+    if(!empty($_POST)) {
+        $students_id = $_POST['student_id'];
+        $assignment_id = $_GET['assignment_id'];
+
+        $opdrachtDatum = new User();
+        $opdrachtDatum->setAssignment_id($assignment_id);
+        $opdrachtDatum->setDate($date);
+        $opdrachtDatum->opdrachtDatumAanpassen(); 
+
+        foreach($students_id as $student_id) {
+            $opdrachtBeoordelen = new User();
+            $opdrachtBeoordelen->setStudent_id($student_id);
+            $opdrachtBeoordelen->setAssignment_id($assignment_id);
+            $opdrachtBeoordelen->opdrachtBeoordelen(); 
+
+            $setPointsStudent = new User();
+            $setPointsStudent->setStudent_id($student_id);
+            $setPointsStudent->setPoints($assignment['reward']);
+            $setPointsStudent->setPointsStudent(); 
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -64,7 +85,7 @@
                     <td><p><?php echo $student['points']; ?></p></td>
                     <td><img src="images/munt.png" alt="munt"></td>
                     <td><?php echo $student['surname'] . " " . $student['name']; ?></td>
-                    <td><input type="checkbox" name="<?php echo $student['id']; ?>"></td>
+                    <td><input type="checkbox" name="student_id[]" value="<?php echo $student['id']; ?>"></td>
                 </tr>
             <?php endforeach; ?>
         </table>

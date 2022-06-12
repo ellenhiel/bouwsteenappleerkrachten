@@ -114,7 +114,7 @@
                     fill="#ffd706" />
                 </g>
               </svg><span>beoordeel</span></a></td>
-          <td><a href="opdracht_aanpassen.php?id=<?php echo $assignment['id']; ?>" class="btn_no_style"
+          <td><a href="opdracht_aanpassen.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class; ?>&subject_id=<?php echo $_GET['subject_id']; ?>" class="btn_no_style"
               style="margin: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="24.657" height="23.6"
                 viewBox="0 0 24.657 23.6">
                 <g id="Icon_feather-edit-3" data-name="Icon feather-edit-3" transform="translate(-3 -2.818)">

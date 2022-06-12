@@ -5,6 +5,9 @@
     $assignment = User::getAssignmentById($assignment_id)[0];
     $className = User::getClassById($_GET['class_id']);
 
+    $studentsFinished = User::getStudentsIdByAssignment($assignment_id, 1);
+    $studentsNotFinished = User::getStudentsIdByAssignment($assignment_id, 0);
+
     if(isset($_GET['class_id'])) {
         $class = $_GET['class_id'];
     } else {
@@ -54,26 +57,28 @@
                 <td>Verdiende munten:</td>
                 <td><?php echo $assignment['reward']; ?></td>
             </tr>
+        </table>
+        <table>
+            <col style="width: 100%;">
             <tr>
                 <td>Leerlingen in orde</td>
+            </tr>
+            <?php foreach($studentsFinished as $studentFinished): ?>
+            <tr>
+                <td><?php echo User::getStudentById($studentFinished['students_id'])[0]['surname'] . " " . User::getStudentById($studentFinished['students_id'])[0]['name']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <table>
+            <col style="width: 100%;">
+            <tr>
                 <td>Leerlingen niet in orde</td>
             </tr>
+            <?php foreach($studentsNotFinished as $studentNotFinished): ?>
             <tr>
-                <td>Stijn Bouckaert</td>
-                <td>Ellen Hiel</td>
+                <td><?php echo User::getStudentById($studentNotFinished['students_id'])[0]['surname'] . " " . User::getStudentById($studentNotFinished['students_id'])[0]['name']; ?></td>
             </tr>
-            <tr>
-                <td>Deborah</td>
-                <td>Bailey Lievens</td>
-            </tr>
-            <tr>
-                <td>Ilya Plyusnin</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Nick Bevers</td>
-                <td></td>
-            </tr>
+            <?php endforeach; ?>
         </table>
     </section>
 </body>

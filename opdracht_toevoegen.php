@@ -1,6 +1,8 @@
 <?php include_once('core/autoload.php');?>
 <?php
     $courses = User::getCourseById($_GET['class_id']);
+    $students_id = User::getStudentsByClassId($_GET['class_id']);
+    $max = User::getMaxId();
 
     if(!empty($_POST)) {
         if(empty($_POST['titel']) || empty($_POST['beschrijving']) || empty($_POST['teverdienenmunten']) || empty($_POST['einddatum'])) {
@@ -25,6 +27,14 @@
             $opdrachtToevoegen->setSubject_id($subject_id);
             $opdrachtToevoegen->setClass_id($class_id);
             $opdrachtToevoegen->opdrachtToevoegen(); 
+
+            foreach ($students_id as $student_id) {
+                $opdrachtToevoegen2 = new User();
+                $opdrachtToevoegen2->setStudent_id($student_id['id']);
+                $opdrachtToevoegen2->setAssignment_id($max+1);
+                $opdrachtToevoegen2->studentsOpdrachtToevoegen(); 
+            };
+
             header('Location: http://localhost:8888/bouwsteenappleerkrachten/opdracht_nederlands.php?class_id=' . $class_id . '&subject_id=' . $subject_id);
         }
     } 

@@ -1,6 +1,6 @@
 table {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
   width: 80%;
 }
 
@@ -9,23 +9,24 @@ table tr {
   padding: 1em 0 1em 0;
 }
 
-table tr:nth-child(4) td {
-  padding-bottom: 5em;
-}
-
-table tr:nth-child(2) td:first-child, table tr:nth-child(3) td:first-child, table tr:nth-child(4) td:first-child {
-  font-size: 1.3em;
-}
-
 table tr:nth-child(5) td {
   font-size: 1.3em;
+}
+
+table tr td:nth-child(2) {
+  padding-left: 2em;
 }
 
 td {
   padding: 0.5em 0 0.5em 0;
 }
 
-.btn {
-  margin-left: 0;
+table:nth-child(3) tr:first-child, table:nth-child(4) tr:first-child {
+  font-weight: bold;
+}
+
+table:nth-child(3), table:nth-child(4) {
+  display: inline;
+  margin-left: 10%;
 }
 /*# sourceMappingURL=opdracht_bekijken.css.map */

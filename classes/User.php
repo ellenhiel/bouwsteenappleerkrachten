@@ -9,6 +9,9 @@
         private $date;
         private $subject_id;
         private $class_id;
+        private $student_id;
+        private $assignment_id;
+        private $points;
 
         const MIN_USERNAME = 5; //Minimum amount of username characters
         const MAX_USERNAME = 20; //Maximum amount of username characters
@@ -76,9 +79,33 @@
             return $this->class_id;
         }
 
-        public static function getCourseById($classId){
+        public function setStudent_id($student_id){
+            $this->student_id = $student_id;
+        }
+
+        public function getStudent_id(){
+            return $this->student_id;
+        }
+
+        public function setAssignment_id($assignment_id){
+            $this->assignment_id = $assignment_id;
+        }
+
+        public function getAssignment_id(){
+            return $this->assignment_id;
+        }
+
+        public function setPoints($points){
+            $this->points = $points;
+        }
+
+        public function getPoints(){
+            return $this->points;
+        }
+
+        public static function getCourseById($classId, $volgorde){
             $conn = Database::getConnection(); 
-            $query = $conn->prepare("SELECT * FROM subjects WHERE classes_id = :classId");
+            $query = $conn->prepare("SELECT * FROM subjects WHERE classes_id = :classId ORDER BY name $volgorde");
             
             $query->bindValue(":classId", $classId);
             $query->execute();
@@ -144,6 +171,27 @@
 
             $result = $query->execute();
             return $result; 
+        }
+
+        public function studentsOpdrachtToevoegen(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO students_assignments (id, finished, claimed, students_id, assignments_id) VALUES (NULL, 0, 0, :student_id, :assignment_id)");
+            
+            $query->bindValue(":student_id", $this->student_id);
+            $query->bindValue(":assignment_id", $this->assignment_id);
+
+            $result = $query->execute();
+            return $result; 
+        }
+
+        public static function getMaxId(){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT MAX(id) FROM assignments");
+            
+            $query->execute();
+
+            $id = $query->fetch();
+            return $id[0];
         }
 
         public function vakToevoegen(){
@@ -246,4 +294,76 @@
             
             return $students;
         }
+
+        public function opdrachtBeoordelen(){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("UPDATE students_assignments SET finished = 1 WHERE students_id = :student_id AND assignments_id = :assignment_id");
+            
+            $query->bindValue(":student_id", $this->student_id);
+            $query->bindValue(":assignment_id", $this->assignment_id);
+
+            $beoordeel = $query->execute();
+            return $beoordeel;
+        }
+
+        public function setPointsStudent(){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("UPDATE students SET points = points + :points WHERE id = :student_id");
+            
+            $query->bindValue(":points", $this->points);
+            $query->bindValue(":student_id", $this->student_id);
+
+            $result = $query->execute();
+            return $result;
+        }
+
+        public function opdrachtDatumAanpassen(){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("UPDATE assignments SET due_date = :date WHERE id = :assignment_id");
+            
+            $query->bindValue(":assignment_id", $this->assignment_id);
+            $query->bindValue(":date", $this->date);
+
+            $result = $query->execute();
+            return $result;
+        }
+
+        public function deleteAssignment(){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("DELETE FROM assignments WHERE id = :assignment_id");
+            
+            $query->bindValue(":assignment_id", $this->assignment_id);
+
+            $result = $query->execute();
+            return $result;
+        }
+
+        public function opdrachtAanpassen(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("UPDATE assignments SET name = :title, description = :description, reward = :reward, due_date = :date, subjects_id = :subject_id, classes_id = :class_id WHERE id = :assignment_id");
+            
+            $query->bindValue(":title", $this->title);
+            $query->bindValue(":description", $this->description);
+            $query->bindValue(":reward", $this->reward);
+            $query->bindValue(":date", $this->date);
+            $query->bindValue(":subject_id", $this->subject_id);
+            $query->bindValue(":class_id", $this->class_id);
+            $query->bindValue(":assignment_id", $this->assignment_id);
+
+            $result = $query->execute();
+            return $result; 
+        }
+
+        public static function getStudentsIdByAssignment($assignment_id, $finished){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT students_id FROM students_assignments WHERE assignments_id = :assignment_id AND finished = :finished");
+            
+            $query->bindValue(":assignment_id", $assignment_id);
+            $query->bindValue(":finished", $finished);
+            $query->execute();
+            $students = $query->fetchAll();
+            
+            return $students;
+        }
+
     }
