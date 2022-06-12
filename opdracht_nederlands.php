@@ -1,14 +1,11 @@
 <?php include_once('core/autoload.php');?>
 <?php include_once('isloggedIn.inc.php');?>
 <?php 
-  $course = User::getSubjectById($_GET['subject_id']);
-  $assignments = User::getAssignmentsById($_GET['class_id'], $_GET['subject_id']);
+  $subject_id = htmlspecialchars($_GET['subject_id']);
+  $class_id = htmlspecialchars($_GET['class_id']);
 
-    if(isset($_GET['class_id'])) {
-        $class = $_GET['class_id'];
-    } else {
-        $class = "klas";
-    }
+  $course = User::getSubjectById($subject_id);
+  $assignments = User::getAssignmentsById($class_id, $subject_id); 
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -62,8 +59,8 @@
             d="M546.19,186.52a34.18,34.18,0,0,0,6.8,1.2,3.15,3.15,0,0,1,1.2-.4q0,.41,12,4,8.59,3.6,13.2,15.2a116.76,116.76,0,0,1,2.8,16c.53.07.8.34.8.8a4.61,4.61,0,0,0-.8,2.4,71.34,71.34,0,0,1,2.8,18.4q0,8.81-6.4,8.8c0-.8-1.74-1.33-5.2-1.6q-4-2.1-4-4.8-.81,0-3.6-20.4,0-5.3-4.4-17.6-6.4-4.4-12.4-4.4a3.08,3.08,0,0,1-1.2.4,3.26,3.26,0,0,0-1.2-.4q-9.6,1.71-10.4,4a25.58,25.58,0,0,0-5.6,7.6l.4.8v.4c-.94,1.4-1.87,4.34-2.8,8.8a3.26,3.26,0,0,1,.4,1.2c-.27,1.87-.4,2.94-.4,3.2l.4.8-.8,1.6.4,2.8-.4.8q1.1,7.41,2,8.4v1.2l-1.2,1.6a6.23,6.23,0,0,1,.8,2.4c-.87,0-1.54,1.34-2,4l-1.6,1.2h-2.4q-6.1,0-12-6.8v-.4c.06-1.86.33-2.8.8-2.8a3,3,0,0,1-.4-1.2q-2.7-26.1-8.8-38,1.69-5.59,5.6-5.6a7.26,7.26,0,0,1,4.4-2.8h3.2a4,4,0,0,1,2.4,3.6h1.2a30.68,30.68,0,0,1,15.6-12.8,16.63,16.63,0,0,0,4-.8H545Z" />
         </g>
       </svg></a>
-    <a href="opdrachten.php?class_id=<?php echo $class; ?>" style="background-color: #F6F6F6; color: #16AC9C;">Opdrachten</a>
-    <a href="leerlingen.php?class_id=<?php echo $class; ?>">Leerlingen</a>
+    <a href="opdrachten.php?class_id=<?php echo $class_id; ?>" style="background-color: #F6F6F6; color: #16AC9C;">Opdrachten</a>
+    <a href="leerlingen.php?class_id=<?php echo $class_id; ?>">Leerlingen</a>
     <a href="logout.php"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="31.5" viewBox="0 0 36 31.5">
         <path id="Icon_open-account-logout" data-name="Icon open-account-logout"
           d="M13.5,0V4.5h18V27h-18v4.5H36V0ZM9,9,0,15.75,9,22.5V18H27V13.5H9Z" fill="#f6f6f6" />
@@ -77,7 +74,7 @@
           <path id="Icon_material-arrow-drop-down" data-name="Icon material-arrow-drop-down"
             d="M10.5,15,18,22.5,25.5,15Z" transform="translate(22.5 -10.5) rotate(90)" fill="#16ac9c" />
         </svg>vakken</a>
-      <h1><?php echo $course['name']; ?></h1>
+      <h1><?php echo htmlspecialchars($course['name']); ?></h1>
       <table class="leerlingen lopende" style="border-radius: 4px; width: 100%;">
         <col style="width: 50%;">
         <col style="width: 15%;">
@@ -93,7 +90,7 @@
                   stroke="none" fill="#707070" />
               </g>
             </svg></a> Lopende opdrachten</th>
-        <th colspan="1"><a href="opdracht_toevoegen.php?class_id=<?php echo $_GET['class_id']; ?>&subject_id=<?php echo $_GET['subject_id']; ?>" class="dropdown"><svg
+        <th colspan="1"><a href="opdracht_toevoegen.php?class_id=<?php echo $class_id; ?>&subject_id=<?php echo $subject_id; ?>" class="dropdown"><svg
               xmlns="http://www.w3.org/2000/svg" width="22.5" height="22.5" viewBox="0 0 22.5 22.5">
               <path id="Icon_ionic-md-add" data-name="Icon ionic-md-add"
                 d="M29.25,19.5H19.5v9.75h-3V19.5H6.75v-3H16.5V6.75h3V16.5h9.75Z" transform="translate(-6.75 -6.75)"
@@ -103,9 +100,9 @@
         <?php foreach($assignments as $assignment): ?>
         <?php if($assignment['due_date'] >= date("Y-m-d")): ?>
         <tr>
-          <td><?php echo $assignment['name']; ?></td>
+          <td><?php echo htmlspecialchars($assignment['name']); ?></td>
           <td>tg. <?php echo date_format(date_create($assignment['due_date']),"d/m/Y"); ?></td>
-          <td><a href="opdracht_beoordelen.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class; ?>&subject_id=<?php echo $_GET['subject_id']; ?>" class="btn_no_style"
+          <td><a href="opdracht_beoordelen.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class_id; ?>&subject_id=<?php echo $subject_id; ?>" class="btn_no_style"
               style="margin: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="28.5" viewBox="0 0 30 28.5">
                 <g id="Group_1" data-name="Group 1" transform="translate(-1462.5 -343.75)">
                   <path id="Icon_material-grade" data-name="Icon material-grade"
@@ -116,7 +113,7 @@
                     fill="#ffd706" />
                 </g>
               </svg><span>beoordeel</span></a></td>
-          <td><a href="opdracht_aanpassen.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class; ?>&subject_id=<?php echo $_GET['subject_id']; ?>" class="btn_no_style"
+          <td><a href="opdracht_aanpassen.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class_id; ?>&subject_id=<?php echo $subject_id; ?>" class="btn_no_style"
               style="margin: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="24.657" height="23.6"
                 viewBox="0 0 24.657 23.6">
                 <g id="Icon_feather-edit-3" data-name="Icon feather-edit-3" transform="translate(-3 -2.818)">
@@ -158,9 +155,9 @@
         <?php foreach($assignments as $assignment): ?>
         <?php if($assignment['due_date'] < date("Y-m-d")): ?>
         <tr>
-          <td><?php echo $assignment['name']; ?></td>
+          <td><?php echo htmlspecialchars($assignment['name']); ?></td>
           <td colspan="2"><?php echo date_format(date_create($assignment['due_date']),"d/m/Y"); ?></td>
-          <td colspan="1"><a href="opdracht_bekijken.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class; ?>&subject_id=<?php echo $_GET['subject_id']; ?>" class="btn_no_style"
+          <td colspan="1"><a href="opdracht_bekijken.php?assignment_id=<?php echo $assignment['id']; ?>&class_id=<?php echo $class_id; ?>&subject_id=<?php echo $subject_id; ?>" class="btn_no_style"
               style="margin: 0;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" viewBox="0 0 30 20">
           <path id="Icon_awesome-eye" data-name="Icon awesome-eye" d="M29.819,13.74A16.7,16.7,0,0,0,15,4.5,16.708,16.708,0,0,0,.181,13.74a1.685,1.685,0,0,0,0,1.52A16.7,16.7,0,0,0,15,24.5a16.708,16.708,0,0,0,14.819-9.24A1.685,1.685,0,0,0,29.819,13.74ZM15,22a7.5,7.5,0,1,1,7.5-7.5A7.5,7.5,0,0,1,15,22ZM15,9.5a4.964,4.964,0,0,0-1.318.2A2.492,2.492,0,0,1,10.2,13.182,4.989,4.989,0,1,0,15,9.5Z" transform="translate(0 -4.5)"/>
         </svg><span>bekijken</span></a></td>

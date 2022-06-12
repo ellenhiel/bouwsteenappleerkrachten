@@ -2,20 +2,20 @@
 <?php include_once('isloggedIn.inc.php');?>
 <?php
 
-    $classId = $_GET['class_id'];
+    $class_id = htmlspecialchars($_GET['class_id']);
     $userId = $_SESSION["userId"];
 
     if(isset($_GET['sort'])) {
-        $volgorde = $_GET['sort'];
+        $volgorde = htmlspecialchars($_GET['sort']);
     } else {
         $volgorde = "ASC";
     }
    
-    $courses = User::getCourseById($classId, $volgorde);
+    $courses = User::getCourseById($class_id, $volgorde);
     $classesId = User::getClassesIdById($userId);
 
     if(isset($_GET['class_id'])) {
-        $class = $_GET['class_id'];
+        $class = htmlspecialchars($_GET['class_id']);
     } else {
         $class = "klas";
     }
@@ -46,10 +46,10 @@
     <section>
         <div class="filters">
             <?php if(is_numeric($_GET['class_id'])): ?>
-        <a class="btn voegtoe1" href="vak_toevoegen.php?class_id=<?php echo $classId ?>"><svg xmlns="http://www.w3.org/2000/svg" width="22.5" height="22.5" viewBox="0 0 22.5 22.5">
+        <a class="btn voegtoe1" href="vak_toevoegen.php?class_id=<?php echo $class_id; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="22.5" height="22.5" viewBox="0 0 22.5 22.5">
             <path id="Icon_ionic-md-add" data-name="Icon ionic-md-add" d="M29.25,19.5H19.5v9.75h-3V19.5H6.75v-3H16.5V6.75h3V16.5h9.75Z" transform="translate(-6.75 -6.75)" fill="#16ac9c"/>
             </svg>vak</a>
-            <a class="btn voegtoe2" href="opdracht_toevoegen.php?class_id=<?php echo $classId ?>"><svg xmlns="http://www.w3.org/2000/svg" width="22.5" height="22.5" viewBox="0 0 22.5 22.5">
+            <a class="btn voegtoe2" href="opdracht_toevoegen.php?class_id=<?php echo $class_id; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="22.5" height="22.5" viewBox="0 0 22.5 22.5">
             <path id="Icon_ionic-md-add" data-name="Icon ionic-md-add" d="M29.25,19.5H19.5v9.75h-3V19.5H6.75v-3H16.5V6.75h3V16.5h9.75Z" transform="translate(-6.75 -6.75)" fill="#16ac9c"/>
             </svg> opdracht</a>
             <select class="dropdown" name="sorteer" id="sorteer">
@@ -65,20 +65,20 @@
                     foreach($classesId as $classId) {
                         $classNames = User::getClassesById($classId['0']);
                         foreach($classNames as $className) {
-                            echo '<option value="' . $className['id'] . '">' . $className['name'] . '</option>';
+                            echo '<option value="' . $className['id'] . '">' . htmlspecialchars($className['name']) . '</option>';
                         }
                     }  
                 ?>
             </select>
         </div>
-            <h1><?php echo User::getClassById($_GET['class_id']); ?></h1>
+            <h1><?php echo User::getClassById($class_id); ?></h1>
 
     <div class="vak">
         <?php foreach($courses as $course): ?>
         <div>
             <a href="opdracht_nederlands.php?class_id=1&subject_id=<?php echo $course['id']; ?>">
                 <img src="images/books.png" alt="NederlandsFoto">
-                <h2><?php echo $course['name']; ?></h2>
+                <h2><?php echo htmlspecialchars($course['name']); ?></h2>
             </a>
         </div>
         <?php endforeach; ?>

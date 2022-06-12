@@ -7,7 +7,7 @@
     $student = User::getStudentById($student_id)[0];
 
     if(isset($_GET['class_id'])) {
-        $class = $_GET['class_id'];
+        $class = htmlspecialchars($_GET['class_id']);
     } else {
         $class = "klas";
     }
@@ -103,7 +103,7 @@
                 $assignmentsdone = User::getAssignmentById($assignmentdoneid['assignments_id']);
                 foreach($assignmentsdone as $assignmentdone) {
                     echo '<tr>
-                    <td>' . $assignmentdone['name'] . '</td>
+                    <td>' . htmlspecialchars($assignmentdone['name']) . '</td>
                     <td><img src="images/munt.png" alt="coin"></td>
                     <td>' . $assignmentdone['reward'] . '</td>
                     </tr>';
@@ -138,7 +138,7 @@
                 $assignmentsnotdone = User::getAssignmentById($assignmentnotdoneid['assignments_id']);
                 foreach($assignmentsnotdone as $assignmentnotdone) {
                     echo '<tr>
-                    <td>' . $assignmentnotdone['name'] . '</td>
+                    <td>' . htmlspecialchars($assignmentnotdone['name']) . '</td>
                     <td><img src="images/munt.png" alt="coin"></td>
                     <td>' . $assignmentnotdone['reward'] . '</td>
                     </tr>';
