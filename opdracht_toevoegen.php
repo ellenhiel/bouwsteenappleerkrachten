@@ -1,7 +1,7 @@
 <?php include_once('core/autoload.php');?>
 <?php include_once('isloggedIn.inc.php');?>
 <?php
-    $courses = User::getCourseById($_GET['class_id']);
+    $courses = User::getCourseById($_GET['class_id'], "ASC");
     $students_id = User::getStudentsByClassId($_GET['class_id']);
     $max = User::getMaxId();
 
