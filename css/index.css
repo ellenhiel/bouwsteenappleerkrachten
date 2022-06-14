@@ -85,6 +85,11 @@ nav {
   cursor: pointer;
 }
 
+.btn:hover {
+  -webkit-box-shadow: 3px 3px rgba(128, 128, 128, 0.2);
+          box-shadow: 3px 3px rgba(128, 128, 128, 0.2);
+}
+
 .dropdown, .btn_no_style {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -307,6 +312,10 @@ table {
           box-shadow: none;
   color: #F6F6F6;
   margin: 2em 1em 2em 1em;
+}
+
+.tda:hover {
+  background-color: #59b8af;
 }
 
 @media (max-width: 970px) {
