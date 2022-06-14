@@ -28,6 +28,8 @@
             $setPointsStudent->setPoints($assignment['reward']);
             $setPointsStudent->setPointsStudent(); 
         }
+
+        header('Location: http://localhost:8888/bouwsteenappleerkrachten/opdracht_nederlands.php?class_id=' . $class_id . '&subject_id=' . $_GET['subject_id']);
     }
 ?>
 <!DOCTYPE html>
@@ -76,6 +78,12 @@
                 <th colspan="2">Aantal munten</th>
                 <th>Naam</th>
                 <th>Voltooid</th>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>selecteer iedereen</td>
+                    <td><input type='checkbox' onClick='$(":checkbox").attr("checked",true);'></td>
+                </tr>
             <?php foreach($students as $student): ?>
                 <tr>
                     <td><p><?php echo $student['points']; ?></p></td>
@@ -90,5 +98,7 @@
         </div>
         </form>
     </section>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+
 </body>
 </html>

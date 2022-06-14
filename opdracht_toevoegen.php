@@ -2,7 +2,6 @@
 <?php include_once('isloggedIn.inc.php');?>
 <?php
     $class_id = htmlspecialchars($_GET['class_id']);
-    $subject_id = htmlspecialchars($_GET['subject_id']);
 
     $courses = User::getCourseById($class_id, "ASC");
     $students_id = User::getStudentsByClassId($class_id);
@@ -44,7 +43,8 @@
 
     $className = User::getClassById($class_id);
 
-    if(isset($subject_id)) {
+    if(isset($_GET['subject_id'])) {
+        $subject_id = htmlspecialchars($_GET['subject_id']);
         $subjectName = User::getSubjectById($subject_id);
     }
 
