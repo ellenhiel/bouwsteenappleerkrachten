@@ -22,11 +22,6 @@
             $opdrachtBeoordelen->setStudent_id($student_id);
             $opdrachtBeoordelen->setAssignment_id($assignment_id);
             $opdrachtBeoordelen->opdrachtBeoordelen(); 
-
-            $setPointsStudent = new User();
-            $setPointsStudent->setStudent_id($student_id);
-            $setPointsStudent->setPoints($assignment['reward']);
-            $setPointsStudent->setPointsStudent(); 
         }
 
         header('Location: http://localhost:8888/bouwsteenappleerkrachten/opdracht_nederlands.php?class_id=' . $class_id . '&subject_id=' . $_GET['subject_id']);
